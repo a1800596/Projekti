@@ -1,7 +1,16 @@
 package hh.swd20.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book
 {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long Id;
 	private String title;
 	private String author;
 	private int year;
@@ -55,6 +64,11 @@ public class Book
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	@Override
+	public String toString() {
+		return "Book [Id=" + Id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+				+ ", price=" + price + "]";
 	}
 	
 	
