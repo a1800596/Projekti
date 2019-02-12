@@ -10,7 +10,7 @@ public class Book
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long Id;
+	private Long id;
 	private String title;
 	private String author;
 	private int year;
@@ -20,6 +20,7 @@ public class Book
 	public Book()
 	{
 		super();
+		this.id = null;
 		this.title = null;
 		this.author = null;
 		this.year = 0;
@@ -65,9 +66,16 @@ public class Book
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "Book [Id=" + Id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
+		return "Book [Id=" + id + ", title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn
 				+ ", price=" + price + "]";
 	}
 	
