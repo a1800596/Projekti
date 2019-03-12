@@ -25,6 +25,12 @@ public class BookController
 	@Autowired
 	private CategoryRepository crepository;
 	
+	// login homma
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
+	
 	
 	@RequestMapping(value="/booklist", method = RequestMethod.GET)
 	public String getBooks(Model model)
@@ -35,16 +41,16 @@ public class BookController
 		return "booklist";
 	}
 	
-	
+	// RESTful service to get all books
     @RequestMapping(value="/books", method = RequestMethod.GET)
     public @ResponseBody List<Book> booktListRest() {	
         return (List<Book>) repository.findAll();
     }    
 
-
+    // RESTful service to get book by id
     @RequestMapping(value="/book/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id) {	
-    	return repository.findById(id);
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long bookid) {	
+    	return repository.findById(bookid);
     }       
 	
 	@RequestMapping(value="/newbook", method = RequestMethod.GET)
@@ -55,7 +61,7 @@ public class BookController
 		return "addbook";
 	}
 	
-	@RequestMapping(value="/newbook", method = RequestMethod.POST)
+	@RequestMapping(value="/savebook", method = RequestMethod.POST)
 	public String addBook(@ModelAttribute Book book)
 	{
 		repository.save(book);

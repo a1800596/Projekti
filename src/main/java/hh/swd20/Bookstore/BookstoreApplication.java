@@ -34,7 +34,7 @@ public class BookstoreApplication {
 			repository.save(new Book("Kirjoittaja", "Kirjayks", 1997, "01010", 30, crepository.findByName("Runo").get(0)));
 			repository.save(new Book("Kirjoittajakaks", "Kirjakaks", 1998, "01011", 30, crepository.findByName("Joulu").get(0)));
 			
-			log.info("fetch all students");
+			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
 			}
